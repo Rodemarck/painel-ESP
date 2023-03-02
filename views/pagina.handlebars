@@ -1,0 +1,8 @@
+<script src="js/socket.js"></script>
+<script>
+    const socket = io();
+    socket.on('dados', info=>{
+        console.log(info)
+    })
+    console.log('imprimindo')
+</script>
