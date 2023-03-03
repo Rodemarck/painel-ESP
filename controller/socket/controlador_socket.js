@@ -11,6 +11,7 @@ const registra = io =>{
 }
 
 export const envia_dado = dado =>{
+
     DADOS.io.emit('dados',[...dado])
 
 }

@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import registra_socket from "./controller/socket/controlador_socket.js";
 import router from "./controller/http/router.js";
+import {registra_mqtt} from "./controller/mqtt/controlador_mqtt.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,13 +18,13 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
-//app.use(cookieParser());
 
 const server = http.createServer(app)
 const io = new Server(server)
 
 registra_socket(io)
 router(app)
+registra_mqtt()
 
 server.listen(3000,()=>{
     console.log('ouvindo na porta 3000')
