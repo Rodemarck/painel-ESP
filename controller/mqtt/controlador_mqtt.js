@@ -22,7 +22,13 @@ export const registra_mqtt = () =>{
 
         switch (lista[0]){
             case 'dados':
-                mqtt_dados(lista,message.toString())
+                let msg = message.toString()
+                mqtt_dados(lista,msg)
+                lista.shift()
+                client.publish(`processados/${lista.join('/')}`,msg)
+                break;
+            case 'comandos':
+                break;
         }
     })
     DADOS.client = client;
