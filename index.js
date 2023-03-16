@@ -8,6 +8,7 @@ import registra_socket from "./controller/socket/controlador_socket.js";
 import router from "./controller/http/router.js";
 import {registra_mqtt} from "./controller/mqtt/controlador_mqtt.js";
 
+const port = 80
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -26,6 +27,6 @@ registra_socket(io)
 router(app)
 registra_mqtt()
 
-server.listen(3000,()=>{
-    console.log('ouvindo na porta 3000')
+server.listen(port,()=>{
+    console.log(`ouvindo na porta ${port}`)
 })
