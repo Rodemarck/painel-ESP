@@ -7,11 +7,14 @@ const DADOS = {
 export const registra_mqtt = () =>{
     if(DADOS.load) return
     DADOS.load = true
-    const client = mqtt.connect('mqtt://rodemarck.site',{
+
+    console.log('tentando conexão')
+    const client = mqtt.connect('mqtt://10.0.0.38:9001',{
         username:'fog',
-        password:'fog1234'
+        password:'fog'
     })
     client.on('connect',()=>{
+        console.log('conectado')
         client.subscribe('dados/#')
         client.subscribe('sessao/#')
         client.subscribe('comandos/#')
@@ -19,7 +22,6 @@ export const registra_mqtt = () =>{
 
     client.on('message',(topic, message)=>{
         let lista = topic.split('/')
-
         switch (lista[0]){
             case 'dados':
                 let msg = message.toString()
