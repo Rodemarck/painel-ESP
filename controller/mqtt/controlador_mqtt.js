@@ -11,13 +11,22 @@ export const registra_mqtt = () =>{
     console.log('tentando conexão')
     const client = mqtt.connect('mqtt://10.0.0.38:9001',{
         username:'fog',
-        password:'fog'
+        password:'fog',
+        will:{
+            topic:'sessao/2',
+            qos:2,
+            retain:false,
+            payload:'DESLIGANDO'
+        }
     })
     client.on('connect',()=>{
         console.log('conectado')
         client.subscribe('dados/#')
-        client.subscribe('sessao/#')
-        client.subscribe('comandos/#')
+        client.publish('sessao/2','LIGANDO',{
+            qos:2
+        })
+        //client.subscribe('sessao/#')
+        //client.subscribe('comandos/#')
     })
 
     client.on('message',(topic, message)=>{
