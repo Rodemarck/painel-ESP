@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --trace-warnings ./index.js"
+    "server": "nohup nodemon --trace-warnings ./index.js &",
+    "start": "nodemon --trace-warnings ./index.js &"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
     "http": "^0.0.1-security",
     "mqtt": "^4.3.7",
     "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
