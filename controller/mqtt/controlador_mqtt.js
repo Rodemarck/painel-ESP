@@ -25,13 +25,13 @@ const conecta = ()=>{
     console.log('conectando....')
     DADOS.client = mqtt.connect('mqtt://10.0.0.38:9001',{
         username:'fog',
-        password:'fog'/*,
+        password:'fog',
         will:{
-            topic:'sessao/fog',
+            topic:'sessao/2',
             qos:2,
             retain:false,
             payload:'DESLIGANDO'
-        }*/
+        }
     })
     let client = DADOS.client
     client.on('connect',()=>{
